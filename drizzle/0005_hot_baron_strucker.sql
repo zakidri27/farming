@@ -1,0 +1,1 @@
+ALTER TABLE "sales" ADD COLUMN "product_type" text;

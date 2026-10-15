@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="My Farm logo">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#22c55e"/>
+      <stop offset="1" stop-color="#15803d"/>
+    </linearGradient>
+  </defs>
+  <rect x="6" y="6" width="116" height="116" rx="28" fill="url(#g)"/>
+  <path d="M64 96V58" stroke="#ffffff" stroke-width="7" stroke-linecap="round"/>
+  <path d="M64 60c0-18 14-30 32-30 0 18-14 30-32 30z" fill="#ffffff" opacity="0.95"/>
+  <path d="M64 74c-15 0-27-10-27-26 15 0 27 10 27 26z" fill="#bbf7d0"/>
+  <circle cx="64" cy="99" r="0" fill="#fff"/>
+</svg>

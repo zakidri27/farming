@@ -1,0 +1,139 @@
+@import "tailwindcss";
+
+:root {
+  --primary: #16a34a;
+  --primary-dark: #15803d;
+  --secondary: #f59e0b;
+  --bg: #f0fdf4;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  max-width: 430px;
+  margin: 0 auto;
+  background: #f0fdf4;
+  min-height: 100vh;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+body {
+  background: #f0fdf4;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #16a34a;
+  border-radius: 2px;
+}
+
+/* Smooth transitions */
+* {
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+/* Input styles follow direction (see html[dir] rules below) */
+input, textarea, select {
+  font-family: inherit;
+}
+
+/* Number inputs LTR */
+input[type="number"] {
+  text-align: left;
+  direction: ltr;
+}
+
+/* Bottom nav safe area */
+.pb-safe {
+  padding-bottom: calc(env(safe-area-inset-bottom) + 4rem);
+}
+
+/* Card hover effect */
+.card-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card-hover:active {
+  transform: scale(0.97);
+}
+
+/* Gradient backgrounds */
+.gradient-green {
+  background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+}
+.gradient-amber {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+}
+.gradient-blue {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+}
+.gradient-red {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+}
+.gradient-purple {
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease forwards;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.slide-up {
+  animation: slideUp 0.3s ease forwards;
+}
+
+/* Status badge */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.125rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+/* Direction follows the active language */
+html[dir="rtl"] { direction: rtl; }
+html[dir="ltr"] { direction: ltr; }
+html[dir="rtl"] input, html[dir="rtl"] textarea, html[dir="rtl"] select { text-align: right; }
+html[dir="ltr"] input, html[dir="ltr"] textarea, html[dir="ltr"] select { text-align: left; }
+
+/* ============ Dark mode (utility overrides) ============ */
+.dark html, .dark body { background: #0f172a; }
+.dark body { background: #0f172a; color-scheme: dark; }
+.dark .bg-green-50 { background-color: #0f172a !important; }
+.dark .bg-white { background-color: #1e293b !important; }
+.dark .bg-gray-50 { background-color: #334155 !important; }
+.dark .bg-gray-100 { background-color: #334155 !important; }
+.dark .bg-amber-50 { background-color: #422006 !important; }
+.dark .bg-green-100 { background-color: #14532d !important; }
+.dark .bg-red-50 { background-color: #450a0a !important; }
+.dark .bg-emerald-50 { background-color: #064e3b !important; }
+.dark .bg-orange-50 { background-color: #431407 !important; }
+.dark .bg-blue-50 { background-color: #172554 !important; }
+.dark .bg-purple-50 { background-color: #3b0764 !important; }
+.dark .text-gray-900, .dark .text-gray-800 { color: #f1f5f9 !important; }
+.dark .text-gray-700, .dark .text-gray-600 { color: #cbd5e1 !important; }
+.dark .text-gray-500, .dark .text-gray-400 { color: #94a3b8 !important; }
+.dark .border-gray-100, .dark .border-gray-200 { border-color: #334155 !important; }
+.dark input, .dark textarea, .dark select { background-color: #0f172a !important; color: #f1f5f9 !important; border-color: #475569 !important; }
+.dark input::placeholder { color: #64748b !important; }

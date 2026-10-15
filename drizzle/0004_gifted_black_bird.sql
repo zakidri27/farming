@@ -1,0 +1,1 @@
+ALTER TABLE "feed_stock" ADD COLUMN "max_quantity" numeric(10, 2);

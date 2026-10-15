@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>دليل تطبيق مزرعتي</title>
+<style>
+  @page { size: A4; margin: 13mm 12mm; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "Segoe UI", Tahoma, Arial, sans-serif; color: #1f2937; font-size: 12.5px; line-height: 1.75; }
+  .page { break-after: page; }
+  .page:last-child { break-after: auto; }
+
+  /* الغلاف */
+  .cover { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 250mm; text-align: center; background: linear-gradient(160deg,#14532d,#16a34a); color:#fff; border-radius: 18px; padding: 40px 30px; }
+  .cover h1 { font-size: 42px; margin: 14px 0 4px; }
+  .cover .sub { font-size: 17px; opacity: .95; }
+  .cover .meta { margin-top: 26px; font-size: 13px; opacity: .9; border-top: 1px solid rgba(255,255,255,.35); padding-top: 14px; width: 80%; }
+  .cover .emoji { font-size: 56px; }
+
+  h2 { color: #14532d; font-size: 21px; margin: 0 0 10px; padding-bottom: 6px; border-bottom: 3px solid #16a34a; }
+  h3 { color: #166534; font-size: 15.5px; margin: 18px 0 6px; }
+  h4 { color: #374151; font-size: 13.5px; margin: 12px 0 4px; }
+  p { margin-bottom: 7px; }
+  ul, ol { margin: 4px 0 10px 0; padding-right: 22px; }
+  li { margin-bottom: 3px; }
+  .lead { font-size: 13.5px; }
+  .badge { display:inline-block; background:#dcfce7; color:#166534; border-radius: 999px; padding: 1px 10px; font-size: 11.5px; font-weight: 700; margin-inline-start: 6px; }
+  .map { width: 100%; border-collapse: collapse; font-size: 11.5px; }
+  .map td, .map th { border: 1px solid #d1d5db; padding: 5px 8px; text-align: right; }
+  .map th { background: #f0fdf4; color:#14532d; }
+  .map tr:nth-child(even) td { background: #fafafa; }
+
+  .screen { display: flex; gap: 18px; align-items: flex-start; margin: 12px 0 6px; }
+  .phone { flex-shrink: 0; border: 10px solid #111827; border-radius: 26px; background:#f0fdf4; box-shadow: 0 6px 18px rgba(0,0,0,.18); }
+  .phone svg { display:block; border-radius: 4px; }
+  .desc { flex: 1; }
+  .tip { background: #fffbeb; border-inline-start: 4px solid #f59e0b; padding: 8px 12px; border-radius: 8px; font-size: 12px; margin-top: 8px; }
+  .warn { background: #fef2f2; border-inline-start: 4px solid #ef4444; padding: 8px 12px; border-radius: 8px; font-size: 12px; margin-top: 8px; }
+  .note { background: #eff6ff; border-inline-start: 4px solid #3b82f6; padding: 8px 12px; border-radius: 8px; font-size: 12px; margin-top: 8px; }
+  .toc td { font-size: 12.5px; }
+  kbd { background:#f3f4f6; border:1px solid #d1d5db; border-bottom-width:2px; border-radius:5px; padding:0 6px; font-size:11.5px; }
+  .footer { font-size: 10.5px; color:#9ca3af; text-align:center; margin-top: 18px; }
+  .grid2 { display:grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .card { border:1px solid #e5e7eb; border-radius: 12px; padding: 12px; background:#fff; }
+  .card b { color:#14532d; }
+</style>
+</head>
+<body>
+
+<!-- ======================= الغلاف ======================= -->
+<div class="page">
+  <div class="cover">
+    <div class="emoji">🐄</div>
+    <h1>مزرعتي</h1>
+    <div class="sub">دليل المستخدم الكامل — إدارة المزرعة على هاتفك</div>
+    <div class="meta">
+      إدارة القطيع • الحليب والإنتاج • الأعلاف • المصاريف والديون • التقارير<br>
+      يعمل دون إنترنت — البيانات محفوظة على هاتفك
+    </div>
+  </div>
+</div>
+
+<!-- ======================= الفهرس ======================= -->
+<div class="page">
+  <h2>الفهرس 📑</h2>
+  <table class="map toc">
+    <tr><th>القسم</th><th>المحتوى</th></tr>
+    <tr><td>١</td><td>مقدمة حول التطبيق ومميزاته</td></tr>
+    <tr><td>٢</td><td>التثبيت وأول تشغيل</td></tr>
+    <tr><td>٣</td><td>خريطة الشاشات (الواجهات الـ ١٦)</td></tr>
+    <tr><td>٤</td><td>الشرح التفصيلي لكل شاشة مع لقطات</td></tr>
+    <tr><td>٥</td><td>النسخ الاحتياطي والاستيراد (وبيانات تجريبية للتقديم)</td></tr>
+    <tr><td>٦</td><td>نصائح وأسئلة شائعة</td></tr>
+  </table>
+
+  <h3 style="margin-top:26px;">١) لماذا مزرعتي؟</h3>
+  <p class="lead">تطبيق عربي بسيط لإدارة المزرعة العائلية: التربية، الإنتاج (حليب/بيض/صوف)، الغذاء، البيع والشراء، الخزينة، والديون.</p>
+  <ul>
+    <li>📴 <b>يعمل 100% دون إنترنت</b> — كل البيانات محفوظة في قاعدة بيانات داخل الهاتف (لا حساب ولا خادم ولا اشتراك).</li>
+    <li>🔒 بياناتك <b>لا تغادر هاتفك إطلاقاً</b>.</li>
+    <li>🌍 لغات: العربية / الفرنسية / الإنجليزية، مع دعم الخط العربي.</li>
+    <li>📊 تقارير بصرية (منحنيات، أعمدة، دوائر) حسب أي فترة تختارها.</li>
+    <li>💾 نسخ احتياطي يدوي بصيغة JSON أو Excel، واستيراد سهل.</li>
+  </ul>
+
+  <h3>٢) التثبيت وأول تشغيل</h3>
+  <ol>
+    <li>انسخ ملف <code>app-debug.apk</code> إلى الهاتف (أو أثبّته عبر الكابل بـ <code>adb install</code>).</li>
+    <li>افتح الملف من «الملفات» واسمح بتثبيت تطبيقات غير معروفة إن طُلب.</li>
+    <li>افتح التطبيق — يبدأ <b>فارغاً تماماً</b> في أول استخدام.</li>
+    <li>عند أول دخول أدخل في «الخزينة» رأس المال الابتدائي إن أردت حساب الرصيد.</li>
+  </ol>
+  <div class="note">لتقديم التطبيق لعملائك بشاشات مليئة بالبيانات: استورد ملف <code>farm-demo-import.json</code> من شاشة «النسخ الاحتياطي» (يُستبدل بمحتوياته كل ما هو موجود).</div>
+</div>
+
+<!-- ======================= خريطة الشاشات ======================= -->
+<div class="page">
+  <h2>٣) خريطة الشاشات 🗺️</h2>
+  <p>شريط التنقل أسفل الشاشة يفتح كل الواجهات. الشاشات وأهميتها:</p>
+  <table class="map">
+    <tr><th>الواجهة</th><th>وظيفتها المختصرة</th><th>الوصول</th></tr>
+    <tr><td>لوحة التحكم</td><td>ملخص سريع: حجم القطيع، رصيد الخزينة، دخل/خرج الشهر، تنبيهات</td><td>شريط التنقل</td></tr>
+    <tr><td>الحيوانات</td><td>إضافة وتعديل وبحث وبيع الحيوانات، تصفية بالأنواع</td><td>شريط التنقل</td></tr>
+    <tr><td>الغذاء</td><td>مخزون الأعلاف، دخول وخروج، توزيع على الحيوانات</td><td>شريط التنقل</td></tr>
+    <tr><td>شراء</td><td>تسجيل المشتريات (علف/حيوانات/معدات/أدوية)</td><td>شريط التنقل</td></tr>
+    <tr><td>مواليد</td><td>تسجيل المواليد الجدد (فردي أو جماعي)</td><td>شريط التنقل</td></tr>
+    <tr><td>صحة وبيطرة</td><td>فحوصات، علاجات، تطعيم، وتكلفتها البيطرية</td><td>شريط التنقل</td></tr>
+    <tr><td>إنتاج</td><td>تسجيل الحليب والبيض وغيره مع قيمته</td><td>شريط التنقل</td></tr>
+    <tr><td>بيع</td><td>إصدار مبيعات الحيوان أو المنتجات، وديون العملاء</td><td>شريط التنقل</td></tr>
+    <tr><td>الخزينة</td><td>إجمالي الرصيد، الداخل / الخارج، التحكم برأس المال</td><td>شريط التنقل</td></tr>
+    <tr><td>مصاريف</td><td>تسجيل المصاريف اليومية حسب الصنف</td><td>شريط التنقل</td></tr>
+    <tr><td>تقارير</td><td>رسوم ونسب حسب فترة تختارها</td><td>شريط التنقل</td></tr>
+    <tr><td>عملاء وموردون</td><td>جهاتك التجارية وهواتفها وديونها</td><td>شريط التنقل</td></tr>
+    <tr><td>تتبع</td><td>متابعة نمو الحيوان ووزنه وسجلّه</td><td>شريط التنقل</td></tr>
+    <tr><td>سجلات الحيوانات</td><td>سجل كامل لكل حيوان</td><td>شريط التنقل</td></tr>
+    <tr><td>الإعدادات</td><td>اللغة، المظهر، حذف جميع البيانات</td><td>شريط التنقل</td></tr>
+    <tr><td>النسخ الاحتياطي</td><td>تصدير واستيراد البيانات (JSON / Excel)</td><td>الإعدادات ← النسخ الاحتياطي</td></tr>
+  </table>
+</div>
+
+<!-- ======================= لوحة التحكم ======================= -->
+<div class="page">
+  <h2>٤) لوحة التحكم 📊</h2>
+  <div class="screen">
+    <div class="phone"><svg viewBox="0 0 300 520" xmlns="http://www.w3.org/2000/svg" style="width:180px;height:auto;font-family:'Segoe UI',Tahoma,sans-serif">
+      <rect width="300" height="520" fill="#f0fdf4"/>
+      <rect width="300" height="58" fill="#16a34a"/>
+      <text x="150" y="26" text-anchor="middle" fill="#fff" font-size="16" font-weight="bold" style="direction:rtl">لوحة التحكم</text>
+      <text x="150" y="46" text-anchor="middle" fill="#dcfce7" font-size="9.5">ملخص اليوم</text>
+      <g font-size="11">
+        <rect x="12" y="70" width="136" height="58" rx="10" fill="#14532d"/>
+        <text x="80" y="92" text-anchor="middle" fill="#a7f3d0" font-size="9">القطيع</text>
+        <text x="80" y="112" text-anchor="middle" fill="#fff" font-size="16" font-weight="bold">8 حيوان</text>
+        <rect x="152" y="70" width="136" height="58" rx="10" fill="#065f46"/>
+        <text x="220" y="92" text-anchor="middle" fill="#a7f3d0" font-size="9">رصيد الخزينة</text>
+        <text x="220" y="112" text-anchor="middle" fill="#fff" font-size="15" font-weight="bold">608,000 دج</text>
+        <rect x="12" y="136" width="136" height="58" rx="10" fill="#ecfdf5"/>
+        <text x="80" y="158" text-anchor="middle" fill="#065f46" font-size="9">داخل الشهر</text>
+        <text x="80" y="178" text-anchor="middle" fill="#047857" font-size="14" font-weight="bold">62,500 دج</text>
+        <rect x="152" y="136" width="136" height="58" rx="10" fill="#fef2f2"/>
+        <text x="220" y="158" text-anchor="middle" fill="#b91c1c" font-size="9">خارج الشهر</text>
+        <text x="220" y="178" text-anchor="middle" fill="#dc2626" font-size="14" font-weight="bold">9,500 دج</text>
+      </g>
+      <g font-size="10">
+        <rect x="12" y="210" width="276" height="34" rx="8" fill="#fff" stroke="#fde68a"/>
+        <text x="24" y="231" fill="#92400e">⚠️ تنبيه صحي: لولوة في طور التعافي</text>
+        <rect x="12" y="252" width="276" height="34" rx="8" fill="#fff" stroke="#bfdbfe"/>
+        <text x="24" y="273" fill="#1e40af">🌾 غذاء منخفض: قش شعير (1500)</text>
+        <rect x="12" y="300" width="276" height="158" rx="10" fill="#fff"/>
+        <text x="24" y="324" fill="#166534" font-weight="bold">وصول سريع</text>
+        <text x="42" y="354" fill="#374151">🐄 حصة الحليب اليوم: 25 لتر</text>
+        <text x="42" y="380" fill="#374151">🥚 بيض اليوم: 40 بيضة</text>
+        <text x="42" y="406" fill="#374151">🌾 تغذية البقر: 75 كغ/رأس</text>
+        <text x="42" y="432" fill="#374151">💵 دين علينا: 20,000 دج</text>
+      </g>
+      <rect x="30" y="476" width="240" height="28" rx="10" fill="#111827"/>
+      <text x="150" y="494" text-anchor="middle" fill="#fff" font-size="9">الرئيسية · القائمة · + · سجلات</text>
+    </svg></div>
+    <div class="desc">
+      <h3>ما تراه هنا</h3>
+      <ul>
+        <li><b>القطيع</b>: عدد الحيوانات المسجلة ونشطة.</li>
+        <li><b>رصيد الخزينة</b>: رأس المال + الداخل − الخارج.</li>
+        <li><b>داخل / خارج الشهر</b>: الإيرادات والمصاريف لهذا الشهر.</li>
+        <li><b>التنبيهات</b>: حيوانات تحتاج رعاية، وأعلاف أقل من الحد الأدنى.</li>
+        <li><b>وصول سريع</b>: اختصارات لأهم شاشات الإدخال.</li>
+      </ul>
+      <h3>كيف تستعملها</h3>
+      <p>هي شاشة عرض فقط. انقر أي بطاقة للانتقال للشاشة المعنية. تُحدَّث الأرقام تلقائياً عند كل دخول.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= الحيوانات ======================= -->
+<div class="page">
+  <h2>الحيوانات 🐄</h2>
+  <div class="screen">
+    <div class="phone"><svg viewBox="0 0 300 520" xmlns="http://www.w3.org/2000/svg" style="width:180px;font-family:'Segoe UI',Tahoma,sans-serif">
+      <rect width="300" height="520" fill="#f0fdf4"/>
+      <rect width="300" height="58" fill="#16a34a"/>
+      <text x="150" y="26" text-anchor="middle" fill="#fff" font-size="16" font-weight="bold" style="direction:rtl">الحيوانات</text>
+      <text x="150" y="46" text-anchor="middle" fill="#dcfce7" font-size="9.5">إضافة / تعديل / بيع</text>
+      <rect x="12" y="68" width="276" height="28" rx="8" fill="#fff" stroke="#d1d5db"/>
+      <text x="24" y="86" fill="#9ca3af" font-size="10">🔍 بحث...</text>
+      <g font-size="10">
+        <rect x="12" y="104" width="276" height="54" rx="10" fill="#fff"/>
+        <text x="24" y="126" font-size="12" font-weight="bold" style="direction:rtl">🐄 لولوة</text>
+        <text x="24" y="144" fill="#6b7280">حليب · هولشتاين · وزن 520 ع 16</text>
+        <text x="276" y="126" text-anchor="end" fill="#166534" font-weight="bold">نشطة</text>
+        <rect x="12" y="166" width="276" height="54" rx="10" fill="#fff"/>
+        <text x="24" y="188" font-size="12" font-weight="bold" style="direction:rtl">🐄 نجمة</text>
+        <text x="24" y="206" fill="#6b7280">حليب · مونتبيليار · وزن 470 ع</text>
+        <text x="276" y="188" text-anchor="end" fill="#166534" font-weight="bold">نشطة</text>
+        <rect x="12" y="228" width="276" height="54" rx="10" fill="#fff"/>
+        <text x="24" y="250" font-size="12" font-weight="bold" style="direction:rtl">🐐 شمس</text>
+        <text x="24" y="268" fill="#6b7280">حليب · سانين · وزن 55 ع</text>
+        <text x="276" y="250" text-anchor="end" fill="#166534" font-weight="bold">نشطة</text>
+        <rect x="12" y="290" width="276" height="54" rx="10" fill="#fff"/>
+        <text x="24" y="312" font-size="12" font-weight="bold" style="direction:rtl">🐑 ريم</text>
+        <text x="24" y="330" fill="#6b7280">لحم · حمري · وزن 60 ع</text>
+        <text x="276" y="312" text-anchor="end" fill="#166534" font-weight="bold">نشطة</text>
+      </g>
+      <circle cx="270" cy="452" r="24" fill="#16a34a"/>
+      <text x="270" y="459" text-anchor="middle" fill="#fff" font-size="22">+</text>
+      <text x="24" y="452" fill="#6b7280" font-size="9">مرر أسفل لرؤية بقية القطيع</text>
+    </svg></div>
+    <div class="desc">
+      <h3>ما تفعله</h3>
+      <ul>
+        <li>إضافة حيوان جديد: الاسم، النوع (بقرة/ماعز/غنم/دجاج/سمان)، السلالة، الجنس، تاريخ الميلاد، الوزن، سعر الشراء، الغرض (حليب/لحم/بيض).</li>
+        <li>بحث سريع بالاسم، وتصفية حسب النوع.</li>
+        <li>تعديل بيانات الحيوان أو تسجيل <b>البيع</b> منه (ينتقل لمبيعات تلقائياً).</li>
+        <li>متابعة الوزن والعمر في شاشة «تتبع».</li>
+      </ul>
+      <div class="tip"><b>نصيحة:</b> استخدم أسماء أو أرقام وسم (Tag) مميزة لتسهيل تحديد كل حيوان.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= الغذاء ======================= -->
+<div class="page">
+  <h2>الغذاء 🌾</h2>
+  <div class="screen">
+    <div class="phone"><svg viewBox="0 0 300 520" xmlns="http://www.w3.org/2000/svg" style="width:180px;font-family:'Segoe UI',Tahoma,sans-serif">
+      <rect width="300" height="520" fill="#f0fdf4"/>
+      <rect width="300" height="58" fill="#16a34a"/>
+      <text x="150" y="26" text-anchor="middle" fill="#fff" font-size="16" font-weight="bold" style="direction:rtl">الغذاء</text>
+      <text x="150" y="46" text-anchor="middle" fill="#dcfce7" font-size="9.5">المخزون والتوزيع</text>
+      <g font-size="10">
+        <text x="24" y="84" font-weight="bold" fill="#166534">المخزون الحالي</text>
+        <rect x="12" y="94" width="276" height="40" rx="9" fill="#fff"/>
+        <text x="24" y="114" font-weight="bold">علف بقرة</text>
+        <text x="24" y="128" fill="#6b7280">2,800 كغ</text>
+        <text x="276" y="114" text-anchor="end" fill="#16a34a" font-weight="bold">ممتاز</text>
+        <rect x="12" y="142" width="276" height="40" rx="9" fill="#fff"/>
+        <text x="24" y="162" font-weight="bold">حبوب دجاج</text>
+        <text x="24" y="176" fill="#6b7280">760 كغ</text>
+        <text x="276" y="162" text-anchor="end" fill="#16a34a" font-weight="bold">ممتاز</text>
+        <rect x="12" y="190" width="276" height="40" rx="9" fill="#fff" stroke="#fca5a5"/>
+        <text x="24" y="210" font-weight="bold">قش شعير</text>
+        <text x="24" y="224" fill="#6b7280">1,500 باقة</text>
+        <text x="276" y="210" text-anchor="end" fill="#dc2626" font-weight="bold">منخفض</text>
+        <text x="24" y="256" font-weight="bold" fill="#166534">آخر الحركات</text>
+        <rect x="12" y="266" width="276" height="42" rx="9" fill="#fff"/>
+        <text x="24" y="284" fill="#059669">⬇ دخول 2,000 كغ علف بقرة</text>
+        <text x="24" y="300" fill="#9ca3af">10-08-2026</text>
+        <rect x="12" y="316" width="276" height="42" rx="9" fill="#fff"/>
+        <text x="24" y="334" fill="#dc2626">⬆ توزيع 150 كغ على البقر</text>
+        <text x="24" y="350" fill="#9ca3af">05-07-2026 · رأسين</text>
+      </g>
+      <rect x="24" y="382" width="252" height="34" rx="9" fill="#e0f2fe"/>
+      <text x="150" y="403" text-anchor="middle" fill="#0369a1" font-weight="bold" font-size="11">توزيع مباشر على الحيوان +</text>
+    </svg></div>
+    <div class="desc">
+      <h3>ما تفعله</h3>
+      <ul>
+        <li><b>دخول غذاء</b>: إضافة كمية جديدة للمخزون (تُحسب التكلفة تلقائياً).</li>
+        <li><b>توزيع / إطعام</b>: تسجيل إخراج الكمية، مع عدد الرؤوس والكمية لكل رأس.</li>
+        <li>يراقب الكميات ويحذّرك عندما تنخفض عن <b>الحد الأدنى</b>.</li>
+        <li>عرض «الحيوانات المؤهلة» واستهداف توزيع على حيوان معيّن.</li>
+      </ul>
+      <div class="warn"><b>مهم:</b> توزيع الغذاء يخصم من المخزون تلقائياً (لا يمكن أن يصبح سالباً).</div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= شراء ======================= -->
+<div class="page">
+  <h2>شراء 🛒</h2>
+  <div class="screen">
+    <div class="phone"><svg viewBox="0 0 300 520" xmlns="http://www.w3.org/2000/svg" style="width:180px;font-family:'Segoe UI',Tahoma,sans-serif">
+      <rect width="300" height="520" fill="#f0fdf4"/>
+      <rect width="300" height="58" fill="#16a34a"/>
+      <text x="150" y="26" text-anchor="middle" fill="#fff" font-size="16" font-weight="bold" style="direction:rtl">شراء</text>
+      <text x="150" y="46" text-anchor="middle" fill="#dcfce7" font-size="9.5">تسجيل مصاريف الشراء</text>
+      <g font-size="10">
+        <rect x="12" y="72" width="276" height="40" rx="9" fill="#fff"/>
+        <text x="24" y="92" font-weight="bold">🌾 أعلاف الأبقار</text>
+        <text x="24" y="106" fill="#6b7280">02-07-2026 · 85,000 دج</text>
+        <text x="276" y="92" text-anchor="end" fill="#059669">مقبوض</text>
+        <rect x="12" y="120" width="276" height="40" rx="9" fill="#fff"/>
+        <text x="24" y="140" font-weight="bold">💊 مضادات حيوية ودواء</text>
+        <text x="24" y="154" fill="#6b7280">03-08-2026 · 60,000 دج</text>
+        <text x="276" y="140" text-anchor="end" fill="#059669">مقبوض</text>
+        <rect x="12" y="168" width="276" height="40" rx="9" fill="#fff"/>
+        <text x="24" y="188" font-weight="bold">🔧 أوعية ماء ومغارف</text>
+        <text x="24" y="202" fill="#6b7280">10-08-2026 · 15,000 دج</text>
+        <text x="276" y="202" text-anchor="end" fill="#059669">مقبوض</text>
+      </g>
+      <rect x="24" y="232" width="252" height="120" rx="10" fill="#fff" stroke="#d1d5db"/>
+      <text x="36" y="256" font-weight="bold" fill="#166534">عملية شراء جديدة</text>
+      <text x="36" y="278" fill="#374151">الصنف: علف / حيوانات / معدات / أدوية / أخرى</text>
+      <text x="36" y="300" fill="#374151">الكمية · الوحدة · السعر · المورد</text>
+      <text x="36" y="322" fill="#374151">أجل أم نقداً؟ (الآجل يُحفظ كدين علينا)</text>
+      <text x="36" y="344" fill="#9ca3af" font-size="9">زر الحفظ يوثّق العملية في الخزينة والديون</text>
+    </svg></div>
+    <div class="desc">
+      <h3>ما تفعله</h3>
+      <ul>
+        <li>الصنف: <b>علف / حيوان / معدات / أدوية / أخرى</b>.</li>
+        <li>الكمية، الوحدة، سعر الوحدة، المورد، والملاحظات.</li>
+        <li><b>دفع نقداً</b>: تُسجّل مصروفاً في الخزينة مباشرة.</li>
+        <li><b>دفع آجل</b>: تُنشأ تلقائياً «دين علينا» في صفحة الديون.</li>
+        <li>التنبيه: لا يكتمل الحفظ إن كان المورد غير موجود أو الرصيد غير كافٍ.</li>
+      </ul>
+      <div class="tip">عند شراء حيوان بوجود المبلغ يكتمل تلقائياً، ويكون الحيوان جاهزاً في صفحة «الحيوانات».</div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= مواليد ======================= -->
+<div class="page">
+  <h2>مواليد 🍼</h2>
+  <div class="screen">
+    <div class="phone"><svg viewBox="0 0 300 520" xmlns="http://www.w3.org/2000/svg" style="width:180px;font-family:'Segoe UI',Tahoma,sans-serif">
+      <rect width="300" height="520" fill="#f0fdf4"/>
+      <rect width="300" height="58" fill="#16a34a"/>
+      <text x="150" y="26" text-anchor="middle" fill="#fff" font-size="16" font-weight="bold" style="direction:rtl">مواليد</text>
+      <text x="150" y="46" text-anchor="middle" fill="#dcfce7" font-size="9.5">تسجيل الولادات</text>
+      <g font-size="10">
+        <rect x="12" y="72" width="276" height="48" rx="9" fill="#fff"/>
+        <text x="24" y="92" font-weight="bold">8 🐄 عجلة — من لولوة</text>
+        <text x="24" y="108" fill="#6b7280">12-07-2026 · أنثى · 34 كغ</text>
+        <text x="276" y="92" text-anchor="end" fill="#059669">على قيد الحياة</text>
+        <rect x="12" y="128" width="276" height="48" rx="9" fill="#fff"/>
+        <text x="24" y="148" font-weight="bold">2 🐐 جديان — من شمس</text>
+        <text x="24" y="164" fill="#6b7280">08-08-2026 · موسم ٢٠٢٦</text>
+        <text x="276" y="148" text-anchor="end" fill="#059669">على قيد الحياة</text>
+      </g>
+      <rect x="24" y="200" width="252" height="220" rx="10" fill="#fff" stroke="#d1d5db"/>
+      <text x="36" y="224" font-weight="bold" fill="#166534">تسجيل ولادة جديدة</text>
+      <text x="36" y="248" fill="#374151">الرئيسية: اختيار الأم من قائمة الحيوانات</text>
+      <text x="36" y="272" fill="#374151">نمط الولادة: فردي أو جماعي (للأغنام/الدجاج)</text>
+      <text x="36" y="296" fill="#374151">اسم المولود / عدد المواليد، النوع، الجنس</text>
+      <text x="36" y="320" fill="#374151">الوزن، السلالة، ملاحظات</text>
+      <text x="36" y="344" fill="#374151">حفظ ⇒ يُضاف المولود للقطيع مباشرة</text>
+    </svg></div>
+    <div class="desc">
+      <h3>ما تفعله</h3>
+      <ul>
+        <li>تسجيل ولادة <b>فردية</b> (عجل/جدي...) مع بيانات المولود.</li>
+        <li>تسجيل ولادة <b>جماعية</b> (موسم خديان / دفعة فراخ) مع العدد الإجمالي.</li>
+        <li>بيانات الأم والأب (يُملأ الاسم تلقائياً من القطيع).</li>
+        <li>المولود الفردي يُضاف تلقائياً إلى صفحة «الحيوانات».</li>
+      </ul>
+      <div class="note">يمكن لاحقاً تحديث حالة الجروب (على قيد الحياة / نافق).</div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= صحة وبيطرة ======================= -->
+<div class="page">
+  <h2>صحة وبيطرة 🏥</h2>
+  <div class="screen">
+    <div class="phone"><svg viewBox="0 0 300 520" xmlns="http://www.w3.org/2000/svg" style="width:180px;font-family:'Segoe UI',Tahoma,sans-serif">
+      <rect width="300" height="520" fill="#f0fdf4"/>
+      <rect width="300" height="58" fill="#16a34a"/>
+      <text x="150" y="26" text-anchor="middle" fill="#fff" font-size="16" font-weight="bold" style="direction:rtl">صحة وبيطرة</text>
+      <text x="150" y="46" text-anchor="middle" fill="#dcfce7" font-size="9.5">السجل الصحي للقطيع</text>
+      <g font-size="10">
+        <rect x="12" y="72" width="276" height="50" rx="9" fill="#fff"/>
+        <text x="24" y="92" font-weight="bold">💉 تطعيم دوري — لولوة</text>
+        <text x="24" y="108" fill="#6b7280">15-07-2026 · 8,000 دج · د. بن عمر</text>
+        <text x="276" y="92" text-anchor="end" fill="#059669">سليم</text>
+        <rect x="12" y="130" width="276" height="50" rx="9" fill="#fff"/>
+        <text x="24" y="150" font-weight="bold">🩺 فحص قطيع — البياض</text>
+        <text x="24" y="166" fill="#6b7280">20-08-2026 · 5,000 دج</text>
+        <text x="276" y="166" text-anchor="end" fill="#059669">سليم</text>
+        <rect x="12" y="188" width="276" height="50" rx="9" fill="#fff" stroke="#fca5a5"/>
+        <text x="24" y="208" font-weight="bold">💉 علاج التهاب الضرع — لولوة</text>
+        <text x="24" y="224" fill="#6b7280">05-09-2026 · 9,000 دج · زيارة 20-09</text>
+        <text x="276" y="224" text-anchor="end" fill="#f59e0b">يتعافى</text>
+      </g>
+      <rect x="24" y="262" width="252" height="120" rx="10" fill="#fff" stroke="#d1d5db"/>
+      <text x="36" y="286" font-weight="bold" fill="#166534">سجل جديد</text>
+      <text x="36" y="308" fill="#374151">النوع: علاج / تطعيم / فحص / تجريع</text>
+      <text x="36" y="330" fill="#374151">التشخيص، العلاج، الأدوية، الطبيب</text>
+      <text x="36" y="352" fill="#374151">التكلفة تلقائياً = أدوية + زيارة</text>
+      <text x="36" y="374" fill="#9ca3af" font-size="9">الحفظ يسجّل مصروفاً في الخزينة</text>
+    </svg></div>
+    <div class="desc">
+      <h3>ما تفعله</h3>
+      <ul>
+        <li>علاج، تطعيم، فحص، تجريع، أو أخرى.</li>
+        <li>التشخيص والعلاج واسم الطبيب وتكلفة الأدوية والزيارة.</li>
+        <li>الموعد القادم للمتابعة، وحالة الحيوان الصحية.</li>
+        <li>تكلفة السجل تُخصم تلقائياً من الخزينة.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= إنتاج ======================= -->
+<div class="page">
+  <h2>إنتاج 🥛</h2>
+  <div class="screen">
+    <div class="phone"><svg viewBox="0 0 300 520" xmlns="http://www.w3.org/2000/svg" style="width:180px;font-family:'Segoe UI',Tahoma,sans-serif">
+      <rect width="300" height="520" fill="#f0fdf4"/>
+      <rect width="300" height="58" fill="#16a34a"/>
+      <text x="150" y="26" text-anchor="middle" fill="#fff" font-size="16" font-weight="bold" style="direction:rtl">إنتاج</text>
+      <text x="150" y="46" text-anchor="middle" fill="#dcfce7" font-size="9.5">الحليب والبيض وغيره</text>
+      <g font-size="10">
+        <rect x="12" y="72" width="276" height="48" rx="9" fill="#fff"/>
+        <text x="24" y="92" font-weight="bold">🥛 حليب — لولوة</text>
+        <text x="24" y="108" fill="#6b7280">05-09-2026 · 22 لتر · 5,500 دج</text>
+        <rect x="12" y="128" width="276" height="48" rx="9" fill="#fff"/>
+        <text x="24" y="148" font-weight="bold">🥚 بيض — قطيع البياض</text>
+        <text x="24" y="164" fill="#6b7280">01-09-2026 · 40 بيضة · 3,200 دج</text>
+        <rect x="12" y="184" width="276" height="48" rx="9" fill="#fff"/>
+        <text x="24" y="204" font-weight="bold">🥛 حليب — لولوة</text>
+        <text x="24" y="220" fill="#6b7280">20-07-2026 · 25 لتر · 6,250 دج</text>
+      </g>
+      <rect x="24" y="256" width="252" height="140" rx="10" fill="#fff" stroke="#d1d5db"/>
+      <text x="36" y="280" font-weight="bold" fill="#166534">تسجيل إنتاج</text>
+      <text x="36" y="304" fill="#374151">المنتج: حليب / بيض / صوف / لحم / عسل / سماد</text>
+      <text x="36" y="328" fill="#374151">الحيوان، الكمية، سعر الوحدة</text>
+      <text x="36" y="352" fill="#374151">القيمة الإجمالية تُحسب وتُعرض</text>
+      <text x="36" y="376" fill="#9ca3af" font-size="9">يمكن تسجيل استهلاك عائلي بعد الحفظ</text>
+    </svg></div>
+    <div class="desc">
+      <h3>ما تفعله</h3>
+      <ul>
+        <li>تسجيل <b>الإنتاج اليومي</b>: حليب، بيض، صوف، لحم، عسل، سماد، أخرى.</li>
+        <li>الحيوان المنتج، الكمية، ووحدة الكمية.</li>
+        <li>سعر الوحدة ← تُحسب <b>القيمة الإجمالية</b> تلقائياً.</li>
+        <li>ملاحظة «استهلاك المنزل» تُسجَّل منفصلة.</li>
+      </ul>
+      <div class="tip">تُستعمل هذه السجلات لرسم «منحنى قيمة الإنتاج» في التقارير.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= بيع ======================= -->
+<div class="page">
+  <h2>بيع 💵</h2>
+  <div class="screen">
+    <div class="phone"><svg viewBox="0 0 300 520" xmlns="http://www.w3.org/2000/svg" style="width:180px;font-family:'Segoe UI',Tahoma,sans-serif">
+      <rect width="300" height="520" fill="#f0fdf4"/>
+      <rect width="300" height="58" fill="#16a34a"/>
+      <text x="150" y="26" text-anchor="middle" fill="#fff" font-size="16" font-weight="bold" style="direction:rtl">بيع</text>
+      <text x="150" y="46" text-anchor="middle" fill="#dcfce7" font-size="9.5">المبيعات وديون العملاء</text>
+      <g font-size="10">
+        <rect x="12" y="72" width="276" height="48" rx="9" fill="#fff"/>
+        <text x="24" y="92" font-weight="bold">🥛 بيع حليب 250 ل</text>
+        <text x="24" y="108" fill="#6b7280">20-07-2026 · دار الحليب · 62,500 دج</text>
+        <text x="276" y="92" text-anchor="end" fill="#059669">مقبوض</text>
+        <rect x="12" y="128" width="276" height="48" rx="9" fill="#fff"/>
+        <text x="24" y="148" font-weight="bold">🐄 بيع بقرة بلدي</text>
+        <text x="24" y="164" fill="#6b7280">16-08-2026 · أحمد بن يوسف · 210,000 دج</text>
+        <text x="276" y="164" text-anchor="end" fill="#059669">مقبوض</text>
+        <rect x="12" y="184" width="276" height="48" rx="9" fill="#fff" stroke="#fca5a5"/>
+        <text x="24" y="204" font-weight="bold">🥚 بيع بيض 350</text>
+        <text x="24" y="220" fill="#6b7280">02-09-2026 · 28,000 دج</text>
+        <text x="276" y="220" text-anchor="end" fill="#f59e0b">بالدين</text>
+      </g>
+      <rect x="24" y="256" width="252" height="120" rx="10" fill="#fff" stroke="#d1d5db"/>
+      <text x="36" y="280" font-weight="bold" fill="#166534">بيعة جديدة</text>
+      <text x="36" y="304" fill="#374151">نوع البيع: حيوان / منتج (حليب، بيض...)</text>
+      <text x="36" y="328" fill="#374151">الزبون، الكمية، السعر — نقداً أم؟</text>
+      <text x="36" y="352" fill="#374151">بالآجل ⇒ «دين عندنا» يُنشأ تلقائياً</text>
+      <text x="36" y="372" fill="#9ca3af" font-size="9">بيع الحيوان يحوّل حالته إلى «مباع»</text>
+    </svg></div>
+    <div class="desc">
+      <h3>ما تفعله</h3>
+      <ul>
+        <li>بيع <b>حيوان</b> أو <b>منتج</b> (حليب، بيض، صوف...).</li>
+        <li>يُعرض سعر نقداً/آجلاً وتتبع الأصول.</li>
+        <li><b>نقداً</b>: يُضاف مبلغه للخزينة فوراً.</li>
+        <li><b>آجلاً</b>: يُنشأ تلقائياً «دين عندنا» على الزبون.</li>
+        <li>بيع الحيوان يغيّر حالته إلى «مباع» في القطيع.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= الخزينة ======================= -->
+<div class="page">
+  <h2>الخزينة 💰</h2>
+  <div class="screen">
+    <div class="phone"><svg viewBox="0 0 300 520" xmlns="http://www.w3.org/2000/svg" style="width:180px;font-family:'Segoe UI',Tahoma,sans-serif">
+      <rect width="300" height="520" fill="#f0fdf4"/>
+      <rect width="300" height="58" fill="#16a34a"/>
+      <text x="150" y="26" text-anchor="middle" fill="#fff" font-size="16" font-weight="bold" style="direction:rtl">الخزينة</text>
+      <text x="150" y="46" text-anchor="middle" fill="#dcfce7" font-size="9.5">توازن مالك المزرعة</text>
+      <g font-size="10">
+        <rect x="12" y="70" width="276" height="56" rx="10" fill="#14532d"/>
+        <text x="24" y="94" fill="#a7f3d0" font-size="9">الرصيد الحالي</text>
+        <text x="24" y="116" fill="#fff" font-size="18" font-weight="bold">608,000 دج</text>
+        <rect x="12" y="134" width="133" height="48" rx="9" fill="#ecfdf5"/>
+        <text x="24" y="154" fill="#065f46">إجمالي الداخل</text>
+        <text x="24" y="174" fill="#047857" font-weight="bold">300,500 دج</text>
+        <rect x="155" y="134" width="133" height="48" rx="9" fill="#fef2f2"/>
+        <text x="167" y="154" fill="#b91c1c">إجمالي الخارج</text>
+        <text x="167" y="174" fill="#dc2626" font-weight="bold">192,500 دج</text>
+        <text x="24" y="210" font-weight="bold" fill="#166534">آخر الحركات</text>
+        <rect x="12" y="220" width="276" height="42" rx="9" fill="#fff"/>
+        <text x="24" y="238" fill="#059669">+ 28,000 بيع بيض</text>
+        <text x="150" y="238" text-anchor="middle" fill="#9ca3af">02-09</text>
+        <text x="276" y="238" text-anchor="end" fill="#7c3aed">617,500</text>
+        <rect x="12" y="268" width="276" height="42" rx="9" fill="#fff"/>
+        <text x="24" y="286" fill="#dc2626">− 30,000 أجرة عامل</text>
+        <text x="150" y="286" text-anchor="middle" fill="#9ca3af">25-08</text>
+        <text x="276" y="286" text-anchor="end" fill="#7c3aed">589,500</text>
+        <rect x="12" y="316" width="276" height="42" rx="9" fill="#fff"/>
+        <text x="24" y="334" fill="#059669">+ 210,000 بيع بقرة</text>
+        <text x="276" y="334" text-anchor="end" fill="#7c3aed">619,500</text>
+      </g>
+      <rect x="24" y="380" width="252" height="40" rx="9" fill="#e0f2fe"/>
+      <text x="150" y="404" text-anchor="middle" fill="#0369a1" font-weight="bold" font-size="11">ضبط رأس المال / إيداع / سحب +</text>
+    </svg></div>
+    <div class="desc">
+      <h3>ما تفعله</h3>
+      <ul>
+        <li>الرصيد الحالي = رأس المال + الداخل − الخارج.</li>
+        <li>سجل كل حركة بتاريخها وتصنيفها (إيداع/سحب من داخل المزرعة، دفع دين، تحصيل دين).</li>
+        <li>ضبط <b>رأس المال الابتدائي</b> عند أول استخدام.</li>
+        <li>كل مبيعة/مصروف/علاج يتحرك هنا تلقائياً.</li>
+      </ul>
+      <div class="warn">رأس المال يُضبط مرة واحدة بحذر — تعديله يؤثر على الرصيد كاملاً.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= مصاريف ======================= -->
+<div class="page">
+  <h2>مصاريف 💸</h2>
+  <div class="screen">
+    <div class="phone"><svg viewBox="0 0 300 520" xmlns="http://www.w3.org/2000/svg" style="width:180px;font-family:'Segoe UI',Tahoma,sans-serif">
+      <rect width="300" height="520" fill="#f0fdf4"/>
+      <rect width="300" height="58" fill="#16a34a"/>
+      <text x="150" y="26" text-anchor="middle" fill="#fff" font-size="16" font-weight="bold" style="direction:rtl">مصاريف</text>
+      <text x="150" y="46" text-anchor="middle" fill="#dcfce7" font-size="9.5">تسجيل الإنفاق اليومي</text>
+      <g font-size="10">
+        <rect x="12" y="72" width="276" height="44" rx="9" fill="#fff"/>
+        <text x="24" y="92" font-weight="bold">💡 فاتورة الكهرباء</text>
+        <text x="24" y="108" fill="#6b7280">08-09-2026 · 9,500 دج</text>
+        <rect x="12" y="124" width="276" height="44" rx="9" fill="#fff"/>
+        <text x="24" y="144" font-weight="bold">👷 أجرة عامل الحظيرة</text>
+        <text x="24" y="160" fill="#6b7280">25-08-2026 · 30,000 دج</text>
+        <rect x="12" y="176" width="276" height="44" rx="9" fill="#fff"/>
+        <text x="24" y="196" font-weight="bold">🏥 تجريع العنزة</text>
+        <text x="24" y="212" fill="#6b7280">28-08-2026 · 5,000 دج</text>
+      </g>
+      <rect x="24" y="244" width="252" height="130" rx="10" fill="#fff" stroke="#d1d5db"/>
+      <text x="36" y="268" font-weight="bold" fill="#166534">مصروف جديد</text>
+      <text x="36" y="292" fill="#374151">الصنف: مشتريات / صحة / غذاء / أجور</text>
+      <text x="36" y="316" fill="#374151">كهرباء / ماء / صيانة / نقل / أخرى</text>
+      <text x="36" y="340" fill="#374151">الوصف، المبلغ، طريقة الدفع</text>
+      <text x="36" y="360" fill="#9ca3af" font-size="9">التنبيه إذا تجاوزت الخزينة</text>
+    </svg></div>
+    <div class="desc">
+      <h3>ما تفعله</h3>
+      <ul>
+        <li>تسجيل أي مصروف يومي مع تصنيف واضح.</li>
+        <li>يمنع الحفظ إن خرج بالحساب أكثر من رصيد الخزينة المتاح.</li>
+        <li>تظهر كل مصاريفك مباشرة في التقارير والخزينة.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= تقارير ======================= -->
+<div class="page">
+  <h2>تقارير 📈</h2>
+  <div class="screen">
+    <div class="phone"><svg viewBox="0 0 300 520" xmlns="http://www.w3.org/2000/svg" style="width:180px;font-family:'Segoe UI',Tahoma,sans-serif">
+      <rect width="300" height="520" fill="#f0fdf4"/>
+      <rect width="300" height="58" fill="#16a34a"/>
+      <text x="150" y="26" text-anchor="middle" fill="#fff" font-size="16" font-weight="bold" style="direction:rtl">تقارير</text>
+      <text x="150" y="46" text-anchor="middle" fill="#a7f3d0" font-size="9.5">الفترة: 6 أشهر الماضية</text>
+      <g font-size="10">
+        <rect x="12" y="64" width="60" height="24" rx="12" fill="#d1fae5"/>
+        <text x="42" y="80" text-anchor="middle" fill="#065f46" font-size="9.5">شهر</text>
+        <rect x="76" y="64" width="62" height="24" rx="12" fill="#d1fae5"/>
+        <text x="107" y="80" text-anchor="middle" fill="#065f46" font-size="9.5">3 أشهر</text>
+        <rect x="142" y="64" width="62" height="24" rx="12" fill="#16a34a"/>
+        <text x="173" y="80" text-anchor="middle" fill="#fff" font-size="9.5">6 أشهر</text>
+        <rect x="208" y="64" width="42" height="24" rx="12" fill="#d1fae5"/>
+        <text x="229" y="80" text-anchor="middle" fill="#065f46" font-size="9.5">سنة</text>
+        <rect x="254" y="64" width="34" height="24" rx="12" fill="#d1fae5"/>
+        <text x="271" y="80" text-anchor="middle" fill="#065f46" font-size="9.5">كل</text>
+      </g>
+      <rect x="12" y="96" width="276" height="30" rx="8" fill="#fff" stroke="#d1d5db"/>
+      <text x="24" y="115" fill="#6b7280">📅 من 2026-03-01 ← إلى 2026-09-11</text>
+      <g font-size="10">
+        <text x="24" y="146" fill="#166534" font-weight="bold">🥛 منحنى قيمة الإنتاج</text>
+        <polyline points="30,210 90,185 150,195 210,215 270,200" fill="none" stroke="#f59e0b" stroke-width="2.5"/>
+        <rect x="12" y="226" width="276" height="120" rx="10" fill="#fff"/>
+        <text x="24" y="248" fill="#166534" font-weight="bold">📊 المبيعات مقابل المصاريف</text>
+        <rect x="40" y="272" width="26" height="46" fill="#10b981"/>
+        <rect x="100" y="272" width="26" height="30" fill="#f87171"/>
+        <rect x="160" y="272" width="26" height="52" fill="#10b981"/>
+        <rect x="220" y="272" width="26" height="24" fill="#f87171"/>
+        <text x="53" y="294" text-anchor="middle" fill="#fff" font-size="8" font-weight="bold">62ك</text>
+        <text x="113" y="290" text-anchor="middle" fill="#fff" font-size="8" font-weight="bold">9ك</text>
+        <text x="173" y="300" text-anchor="middle" fill="#fff" font-size="8" font-weight="bold">28ك</text>
+        <text x="233" y="286" text-anchor="middle" fill="#fff" font-size="8" font-weight="bold">8ك</text>
+        <text x="24" y="334" fill="#9ca3af" font-size="9">🐄 توزيع القطيع · 🛒 مشتريات · 💸 مصاريف · 🥛 منتجات</text>
+      </g>
+      <text x="150" y="360" text-anchor="middle" fill="#6b7280" font-size="10">⬇ المواليد · الصحة · الأعلاف · أفضل العملاء والموردين</text>
+    </svg></div>
+    <div class="desc">
+      <h3>ما تفعله</h3>
+      <ul>
+        <li>اختر <b>فترة</b> (شهر / 3 / 6 / سنة / الكل) أو من-إلى يدوياً.</li>
+        <li>مبيعات مقابل مصاريف، منحنى قيمة الإنتاج.</li>
+        <li>توزيع القطيع، مشتريات حسب الصنف، مصاريف حسب الصنف.</li>
+        <li>المواليد/شهر، السجلات الصحية، حركات الغذاء.</li>
+        <li>أفضل العملاء والموردين.</li>
+      </ul>
+      <div class="tip">كل الرسوم تتحدث فوراً عند تغيير الفترة.</div>
+      <div class="note">زر «الكل» يعرض كل الفترة منذ أول يوم في سجلك.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= عملاء وموردون ======================= -->
+<div class="page">
+  <h2>عملاء وموردون 👥</h2>
+  <div class="screen">
+    <div class="phone"><svg viewBox="0 0 300 520" xmlns="http://www.w3.org/2000/svg" style="width:180px;font-family:'Segoe UI',Tahoma,sans-serif">
+      <rect width="300" height="520" fill="#f0fdf4"/>
+      <rect width="300" height="58" fill="#16a34a"/>
+      <text x="150" y="26" text-anchor="middle" fill="#fff" font-size="16" font-weight="bold" style="direction:rtl">عملاء وموردون</text>
+      <text x="150" y="46" text-anchor="middle" fill="#a7f3d0" font-size="9.5">دفتر عناوين تجاري</text>
+      <g font-size="10">
+        <rect x="12" y="72" width="276" height="44" rx="9" fill="#fff"/>
+        <text x="24" y="92" font-weight="bold">أحمد بن يوسف</text>
+        <text x="24" y="108" fill="#6b7280">زبون · 0550123456 · بسكرة</text>
+        <rect x="12" y="124" width="276" height="44" rx="9" fill="#fff"/>
+        <text x="24" y="144" font-weight="bold">عمراني محمد</text>
+        <text x="24" y="160" fill="#6b7280">مورّد · 0661234567 · خنشلة</text>
+        <rect x="12" y="176" width="276" height="44" rx="9" fill="#fff"/>
+        <text x="24" y="196" font-weight="bold">دار الحليب</text>
+        <text x="24" y="212" fill="#6b7280">زبون · 0772345678 · البركة</text>
+        <rect x="12" y="228" width="276" height="44" rx="9" fill="#fff"/>
+        <text x="24" y="248" font-weight="bold">سعيد بوعلام</text>
+        <text x="24" y="264" fill="#6b7280">زبون ومورّد · 0664567890</text>
+      </g>
+      <rect x="24" y="296" width="252" height="90" rx="10" fill="#fff" stroke="#d1d5db"/>
+      <text x="36" y="320" font-weight="bold" fill="#166534">إضافة جهة</text>
+      <text x="36" y="344" fill="#374151">الاسم، النوع (زبون / مورّد / كلاهما)</text>
+      <text x="36" y="364" fill="#374151">الهاتف، العنوان، الملاحظات</text>
+    </svg></div>
+    <div class="desc">
+      <h3>ما تفعله</h3>
+      <ul>
+        <li>حفظ العملاء والموردين لهواتفهم وتصنيفهم.</li>
+        <li>الربط التلقائي مع المبيعات والمشتريات والديون.</li>
+        <li>يّظهر «ديون» كل جهة هنا، ويسهل تحصيلها.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= تتبع ======================= -->
+<div class="page">
+  <h2>تتبع 🔍</h2>
+  <div class="screen">
+    <div class="phone"><svg viewBox="0 0 300 520" xmlns="http://www.w3.org/2000/svg" style="width:180px;font-family:'Segoe UI',Tahoma,sans-serif">
+      <rect width="300" height="520" fill="#f0fdf4"/>
+      <rect width="300" height="58" fill="#16a34a"/>
+      <text x="150" y="26" text-anchor="middle" fill="#fff" font-size="16" font-weight="bold" style="direction:rtl">تتبع</text>
+      <text x="150" y="46" text-anchor="middle" fill="#a7f3d0" font-size="9.5">متابعة النمو</text>
+      <g font-size="10">
+        <rect x="12" y="72" width="276" height="52" rx="9" fill="#fff"/>
+        <text x="24" y="92" font-weight="bold">🐄 لولوة — البقرة</text>
+        <text x="24" y="108" fill="#6b7280">الوزن 520 ع · الحالة: نشطة</text>
+        <rect x="12" y="132" width="276" height="52" rx="9" fill="#fff"/>
+        <text x="24" y="152" font-weight="bold">🐐 شمس — العنزة</text>
+        <text x="24" y="168" fill="#6b7280">الوزن 55 ع · 6 مواليد</text>
+      </g>
+      <rect x="24" y="208" width="252" height="150" rx="10" fill="#fff" stroke="#d1d5db"/>
+      <text x="36" y="232" font-weight="bold" fill="#166534">اختار حيواناً لعرض سجله</text>
+      <text x="36" y="256" fill="#374151">البيانات الأساسية والتاريخ</text>
+      <text x="36" y="280" fill="#374151">الوزن بالموجات في الوقت</text>
+      <text x="36" y="304" fill="#374151">العلاجات والإنتاج والمواليد</text>
+      <text x="36" y="328" fill="#374151">الغذاء والإنفاق عليه</text>
+    </svg></div>
+    <div class="desc">
+      <h3>ما تفعله</h3>
+      <ul>
+        <li>اختر حيواناً واعرض <b>بطاقة تعريف</b> (الجنس، السلالة، العمر تقديرياً بالأسنان).</li>
+        <li>متابعة <b>الوزن</b> عبر الزمن.</li>
+        <li>إجمالي السلوكيات، والعلاجات، والمبيعات المتعلقة به.</li>
+        <li>التغذية، والإنتاج، وأي مصروف مرتبط به.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= سجلات ======================= -->
+<div class="page">
+  <h2>سجلات الحيوانات 📋</h2>
+  <div class="screen">
+    <div class="phone"><svg viewBox="0 0 300 520" xmlns="http://www.w3.org/2000/svg" style="width:180px;font-family:'Segoe UI',Tahoma,sans-serif">
+      <rect width="300" height="520" fill="#f0fdf4"/>
+      <rect width="300" height="58" fill="#16a34a"/>
+      <text x="150" y="26" text-anchor="middle" fill="#fff" font-size="16" font-weight="bold" style="direction:rtl">سجلات الحيوانات</text>
+      <text x="150" y="46" text-anchor="middle" fill="#a7f3d0" font-size="9.5">كل الحيوانات دفعة واحدة</text>
+      <g font-size="10">
+        <rect x="12" y="72" width="276" height="52" rx="9" fill="#fff"/>
+        <text x="24" y="92" font-weight="bold">🐄 لولوة</text>
+        <text x="24" y="108" fill="#6b7280">حليب · ع مسجّلة أعلاه · متابعة كاملة</text>
+        <text x="276" y="92" text-anchor="end" fill="#16a34a">فتح</text>
+        <rect x="12" y="132" width="276" height="52" rx="9" fill="#fff"/>
+        <text x="24" y="152" font-weight="bold">🐑 ريم</text>
+        <text x="24" y="168" fill="#6b7280">لحم · حمري · نشطة</text>
+        <text x="276" y="152" text-anchor="end" fill="#16a34a">فتح</text>
+      </g>
+      <text x="150" y="220" text-anchor="middle" fill="#6b7280" font-size="10">سجلات كاملة لكل حيوان من صفحة واحدة</text>
+    </svg></div>
+    <div class="desc">
+      <h3>ما تفعله</h3>
+      <ul>
+        <li>قائمة كاملة بكل الحيوانات مع إمكانية فتح سجل أي حيوان.</li>
+        <li>تحديث البيانات (الوزن، العمر، الحالة) من مكان واحد.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= إعدادات ======================= -->
+<div class="page">
+  <h2>الإعدادات ⚙️</h2>
+  <div class="screen">
+    <div class="phone"><svg viewBox="0 0 300 520" xmlns="http://www.w3.org/2000/svg" style="width:180px;font-family:'Segoe UI',Tahoma,sans-serif">
+      <rect width="300" height="520" fill="#f0fdf4"/>
+      <rect width="300" height="58" fill="#16a34a"/>
+      <text x="150" y="26" text-anchor="middle" fill="#fff" font-size="16" font-weight="bold" style="direction:rtl">الإعدادات</text>
+      <g font-size="10">
+        <rect x="12" y="70" width="276" height="64" rx="10" fill="#fff"/>
+        <text x="24" y="92" fill="#166534" font-weight="bold" style="direction:rtl">🌍 لغة التطبيق</text>
+        <rect x="24" y="104" width="60" height="22" rx="11" fill="#16a34a"/>
+        <text x="54" y="119" text-anchor="middle" fill="#fff" font-size="8.5">العربية</text>
+        <rect x="88" y="104" width="54" height="22" rx="11" fill="#f3f4f6"/>
+        <text x="115" y="119" text-anchor="middle" fill="#4b5563" font-size="8.5">English</text>
+        <rect x="146" y="104" width="56" height="22" rx="11" fill="#f3f4f6"/>
+        <text x="174" y="119" text-anchor="middle" fill="#4b5563" font-size="8.5">Français</text>
+        <rect x="12" y="142" width="276" height="56" rx="10" fill="#fff"/>
+        <text x="24" y="164" fill="#166534" font-weight="bold">🌙 المظهر</text>
+        <text x="24" y="184" fill="#6b7280">فاتح / داكن</text>
+        <rect x="12" y="206" width="276" height="76" rx="10" fill="#fff"/>
+        <text x="24" y="228" fill="#166534" font-weight="bold">💾 النسخ الاحتياطي</text>
+        <text x="24" y="248" fill="#6b7280">تصدير أو استعادة عند تغيير الجهاز</text>
+        <rect x="24" y="258" width="130" height="0" fill="none"/>
+        <text x="24" y="272" fill="#2563eb" font-size="9">فتح النسخ الاحتياطي ←</text>
+        <rect x="12" y="290" width="276" height="76" rx="10" fill="#fff" stroke="#fecaca"/>
+        <text x="24" y="312" fill="#b91c1c" font-weight="bold">🗑️ حذف جميع البيانات</text>
+        <text x="24" y="332" fill="#6b7280">يعود التطبيق كأنه جديد — إجراء لا يمكن التراجع عنه</text>
+        <rect x="24" y="342" width="120" height="20" rx="10" fill="#dc2626"/>
+        <text x="84" y="356" text-anchor="middle" fill="#fff" font-size="8.5" font-weight="bold">حذف جميع البيانات</text>
+      </g>
+    </svg></div>
+    <div class="desc">
+      <h3>ما تراه هنا</h3>
+      <ul>
+        <li><b>اللغة</b>: العربية / الإنجليزية / الفرنسية.</li>
+        <li><b>المظهر</b>: الوضع الفاتح أو الداكن.</li>
+        <li><b>النسخ الاحتياطي</b>: يفتح صفحة التصدير والاستيراد.</li>
+        <li><b>حذف جميع البيانات</b>: إعادة ضبط المصنع (بعد تأكيد مزدوج).</li>
+      </ul>
+      <div class="warn">زر الحذف الكامل لا يمكن التراجع عنه — حذفه بعد التأكيد فقط، وأبقِ نسخة احتياطية قبل استخدامه.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= نسخ احتياطي ======================= -->
+<div class="page">
+  <h2>النسخ الاحتياطي 💾</h2>
+  <div class="screen">
+    <div class="phone"><svg viewBox="0 0 300 520" xmlns="http://www.w3.org/2000/svg" style="width:180px;font-family:'Segoe UI',Tahoma,sans-serif">
+      <rect width="300" height="520" fill="#f0fdf4"/>
+      <rect width="300" height="58" fill="#16a34a"/>
+      <text x="150" y="26" text-anchor="middle" fill="#fff" font-size="16" font-weight="bold" style="direction:rtl">النسخ الاحتياطي</text>
+      <text x="150" y="46" text-anchor="middle" fill="#a7f3d0" font-size="9.5">خروج ودخول البيانات</text>
+      <g font-size="10">
+        <text x="24" y="86" fill="#166534" font-weight="bold">📤 تصدير البيانات</text>
+        <rect x="12" y="94" width="276" height="44" rx="9" fill="#dcfce7"/>
+        <text x="24" y="114" fill="#166534" font-weight="bold">📄 ملف JSON — كامل ودقيق</text>
+        <text x="24" y="130" fill="#047857">يحفظ كل الجداول حرفياً</text>
+        <rect x="12" y="146" width="276" height="44" rx="9" fill="#dbeafe"/>
+        <text x="24" y="166" fill="#1e40af" font-weight="bold">📗 ملف Excel — جداول احترافية</text>
+        <text x="24" y="182" fill="#1d4ed8">ورقة ملخص + جدول لكل قسم</text>
+        <text x="24" y="216" fill="#166534" font-weight="bold">📥 استيراد البيانات</text>
+        <rect x="12" y="224" width="276" height="54" rx="9" fill="#fff" stroke="#d1d5db"/>
+        <text x="24" y="244" fill="#374151">اختر ملف JSON أو Excel مستورده</text>
+        <text x="24" y="262" fill="#6b7280">(يحل محل البيانات الحالية)</text>
+        <text x="24" y="278" fill="#dc2626" font-size="9">⚠️ انتبه: الاستيراد يمسح البيانات الحالية — صدّر نسخة أولاً</text>
+      </g>
+    </svg></div>
+    <div class="desc">
+      <h3>للتصدير</h3>
+      <ol>
+        <li>من الإعدادات ← النسخ الاحتياطي ← افتح.</li>
+        <li>اختر «ملف JSON» أو «ملف Excel».</li>
+        <li>يُحفظ الملف في مستندات الهاتف ويمكن مشاركته (شار / متصفح الملفات).</li>
+      </ol>
+      <h3>للاستيراد والتجربة مع المشتري</h3>
+      <ol>
+        <li>ضع ملف <code>farm-demo-import.json</code> على الهاتف.</li>
+        <li>افتح «استيراد» ← «اختيار ملف» ← حدّده.</li>
+        <li>أكّد — ستعمّر الشاشات كلها ببيانات توضيحية للعرض.</li>
+      </ol>
+      <div class="warn">الاستيراد يستبدل كل ما هو موجود. في المرة الأولى يُفضّل التصدير أولاً.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= أسئلة شائعة ======================= -->
+<div class="page">
+  <h2>نصائح وأسئلة شائعة ❓</h2>
+  <h3>أسئلة شائعة</h3>
+  <table class="map">
+    <tr><th>السؤال</th><th>الجواب</th></tr>
+    <tr><td>هل يلزم إنترنت للعمل؟</td><td>لا — التطبيق محلي 100%، بياناتك في هاتفك.</td></tr>
+    <tr><td>كيف أنقل بياناتي لهاتف آخر؟</td><td>من «النسخ الاحتياطي» صدّر ملف JSON، ثم استورده في الهاتف الجديد.</td></tr>
+    <tr><td>ماذا لو نسيت رأس المال؟</td><td>اضبطه من الخزينة ← ضبط رأس المال في أي وقت.</td></tr>
+    <tr><td>كيف أمسح كل شيء؟</td><td>الإعدادات ← حذف جميع البيانات (مع تأكيد).</td></tr>
+    <tr><td>هل يمكن تغيير اللغة؟</td><td>نعم — الإعدادات ← اللغة (عربي/إنجليزي/فرنسي).</td></tr>
+    <tr><td>هل البيانات محمية؟</td><td>تبقى على جهازك؛ ينصح بعمل نسخة احتياطية دورية.</td></tr>
+  </table>
+
+  <h3>نصائح الممارسة الجيدة</h3>
+  <ul>
+    <li>🎯 سجّل الولادات والإنتاج <b>نفس اليوم</b> حتى تكون الرسوم دقيقة.</li>
+    <li>💾 صدّر نسخة احتياطية <b>أسبوعياً</b> أو قبل أي تنظيف.</li>
+    <li>📞 فعّل حفظ جهاتك لربط المبيعات والديون بأسمائك.</li>
+    <li>🌾 وازن مخزون الأعلاف لتفادي تنبيهات «الغذاء المنخفض».</li>
+    <li>🏥 دوّن مواعيد الزيارات البيطرية القادمة في خانة «الموعد القادم».</li>
+  </ul>
+
+  <div class="footer">دليل تطبيق «مزرعتي» — إدارة المزرعة دون إنترنت · جميع الحقوق محفوظة 🐄</div>
+</div>
+
+</body>
+</html>
